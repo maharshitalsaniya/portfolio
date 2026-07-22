@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talsaniya Maharshi — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #1b2a41;
+    --navy-deep: #101a2b;
+    --burgundy: #7a2e2e;
+    --burgundy-light: #9c3d3d;
+    --cream: #f8f6f1;
+    --white: #ffffff;
+    --text: #2a2f38;
+    --text-dim: #5b6270;
+    --line: #dedad0;
+    --serif: 'Merriweather', serif;
+    --sans: 'Lato', sans-serif;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width:100%; display:block; }
+
+  /* ---------- Top navigation ---------- */
+  header.nav{
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: var(--white);
+    border-bottom: 3px solid var(--burgundy);
+    box-shadow: 0 1px 8px rgba(27,42,65,0.06);
+  }
+  .nav-inner{
+    max-width: 1120px;
+    margin: 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 16px 24px;
+  }
+  .nav-name{
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: 0.2px;
+  }
+  .nav-links{
+    display:flex;
+    gap: 30px;
+    list-style:none;
+  }
+  .nav-links a{
+    color: var(--text-dim);
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: color .15s ease;
+  }
+  .nav-links a:hover{ color: var(--burgundy); }
+
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap: 5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding: 6px;
+  }
+  .nav-toggle span{
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    display:block;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  .nav-toggle.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2){ opacity: 0; }
+  .nav-toggle.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile{
+    display:none;
+    flex-direction:column;
+    background: var(--cream);
+    padding: 6px 24px 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-mobile.open{ display:flex; }
+  .nav-mobile a{
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-mobile a:last-child{ border-bottom:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background: linear-gradient(160deg, var(--cream) 0%, var(--white) 100%);
+    color: var(--navy);
+    padding: 68px 24px 0;
+    text-align:center;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-eyebrow{
+    display:inline-block;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--burgundy);
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .hero h1{
+    font-family: var(--serif);
+    font-size: clamp(30px, 6vw, 50px);
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+    color: var(--navy);
+  }
+  .hero .role{
+    font-size: clamp(15px, 2.4vw, 17px);
+    color: var(--burgundy);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .hero p.summary{
+    max-width: 620px;
+    margin: 0 auto 34px;
+    color: var(--text-dim);
+    font-size: 15.5px;
+    line-height: 1.8;
+    padding: 0 8px;
+  }
+  .hero-actions{
+    display:flex;
+    gap: 14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom: 44px;
+  }
+  .btn{
+    display:inline-block;
+    padding: 13px 28px;
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    border-radius: 2px;
+    border: 2px solid transparent;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn.solid{
+    background: var(--burgundy);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(122,46,46,0.25);
+  }
+  .btn.solid:hover{ background: var(--burgundy-light); }
+  .btn.outline{
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+  .btn.outline:hover{ border-color: var(--burgundy); color: var(--burgundy); }
+
+  /* ---------- Recruiter quick-scan strip ---------- */
+  .scan-strip{
+    max-width: 1020px;
+    margin: 0 auto;
+    transform: translateY(36px);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    box-shadow: 0 12px 28px rgba(27,42,65,0.1);
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow:hidden;
+  }
+  .scan-item{
+    padding: 20px 14px;
+    text-align:center;
+    border-right: 1px solid var(--line);
+  }
+  .scan-item:last-child{ border-right:none; }
+  .scan-item .num{
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--navy);
+  }
+  .scan-item .lbl{
+    font-size: 11.5px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  section#about{ padding-top: 108px; }
+  section.alt{ background: var(--cream); max-width: none; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  section.alt .inner{ max-width: 1020px; margin: 0 auto; }
+
+  .section-head{
+    text-align:center;
+    margin-bottom: 44px;
+  }
+  .section-head .kicker{
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .section-head h2{
+    font-family: var(--serif);
+    font-size: clamp(24px, 4vw, 30px);
+    font-weight: 900;
+    color: var(--navy);
+  }
+  .section-head .rule{
+    width: 52px;
+    height: 3px;
+    background: var(--burgundy);
+    margin: 16px auto 0;
+  }
+
+  /* ---------- About ---------- */
+  .about-text{
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: var(--text-dim);
+    text-align:center;
+  }
+  .about-text p{ margin-bottom: 18px; }
+  .about-text b{ color: var(--navy); font-weight: 700; }
+
+  /* ---------- Education ---------- */
+  .timeline{
+    position: relative;
+    padding-left: 30px;
+    border-left: 3px solid var(--burgundy);
+  }
+  .timeline-item{
+    position: relative;
+    margin-bottom: 24px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 24px;
+  }
+  .timeline-item::before{
+    content:"";
+    position: absolute;
+    left: -39px;
+    top: 24px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--burgundy);
+  }
+  .timeline-item .degree{
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .timeline-item .school{ font-size: 14.5px; color: var(--text); margin-bottom: 10px; }
+  .timeline-item .years{
+    display:inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--navy);
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing:0.3px;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .skill-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--navy);
+    border-radius: 3px;
+    padding: 22px;
+    text-align:left;
+    transition: box-shadow .15s ease, transform .15s ease, border-color .15s ease;
+  }
+  .skill-card:hover{ box-shadow: 0 10px 24px rgba(16,26,43,0.1); transform: translateY(-3px); border-top-color: var(--burgundy); }
+  .skill-card .title{
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .skill-tags{ display:flex; flex-wrap:wrap; gap: 8px; }
+  .skill-tag{
+    font-size: 13px;
+    padding: 5px 12px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ---------- Hobbies ---------- */
+  .hobbies-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap: 14px;
+  }
+  .hobby{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 13px 20px;
+    font-size: 14.5px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .hobby .ico{ font-size: 17px; }
+
+  /* ---------- Contact ---------- */
+  .contact-wrap{
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--burgundy);
+    border-radius: 6px;
+    padding: 48px 32px;
+    text-align:center;
+    color: var(--navy);
+  }
+  .contact-wrap h2{
+    font-family: var(--serif);
+    font-size: clamp(22px, 4vw, 27px);
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: var(--navy);
+  }
+  .contact-wrap p{ color: var(--text-dim); margin-bottom: 32px; font-size: 15px; }
+  .contact-cards{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 34px;
+    max-width: 600px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .contact-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px;
+    transition: box-shadow .15s ease, border-color .15s ease;
+  }
+  .contact-card:hover{ box-shadow: 0 8px 20px rgba(27,42,65,0.08); border-color: var(--burgundy-light); }
+  .contact-card .lbl{
+    font-size: 11.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .contact-card .val{ font-size: 14.5px; color: var(--navy); word-break: break-word; }
+
+  footer{
+    text-align:center;
+    padding: 22px;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 780px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:flex; }
+    .scan-strip{ grid-template-columns: repeat(2, 1fr); }
+    .scan-item:nth-child(2){ border-right:none; }
+    .scan-item:nth-child(-n+2){ border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 600px){
+    section{ padding: 44px 18px; }
+    section#about{ padding-top: 128px; }
+    .timeline{ padding-left: 22px; }
+    .timeline-item::before{ left: -31px; }
+    .timeline-item{ padding: 18px 18px; }
+    .contact-wrap{ padding: 34px 18px; }
+    .hero{ padding-top: 52px; }
+    .hero-actions .btn{ flex: 1 1 auto; text-align:center; }
+  }
+  @media (max-width: 380px){
+    .scan-strip{ grid-template-columns: 1fr 1fr; }
+  }
+
+  a:focus-visible, .btn:focus-visible, .nav-toggle:focus-visible{
+    outline: 2px solid var(--burgundy-light);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .btn:hover, .skill-card:hover{ transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Talsaniya Maharshi</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Available for hire</div>
+  <h1>Talsaniya Maharshi</h1>
+  <div class="role">BCA Graduate &nbsp;</div>
+  <p class="summary">
+    A BCA graduate from Ahmedabad, skilled in Python, Laravel, Java, C#, HTML, CSS, SQL, and ASP.NET.
+    Looking for a software development role to learn, grow, and contribute from day one.
+  </p>
+  <div class="hero-actions">
+    <a class="btn solid" id="emailBtn" href="#" target="_blank" rel="noopener">Email Me</a>
+    <a class="btn outline" href="tel:+917096241105">Call Me</a>
+    <a class="btn outline" id="linkedinBtn" href="https://www.linkedin.com/search/results/all/?keywords=Maharshi%20Talsaniya" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+
+  <div class="scan-strip">
+    <div class="scan-item">
+      <div class="num">7.97</div>
+      <div class="lbl">BCA CGPA</div>
+    </div>
+    <div class="scan-item">
+      <div class="num">8+</div>
+      <div class="lbl">Tech Skills</div>
+    </div>
+    <div class="scan-item">
+      <div class="num">Fresher</div>
+      <div class="lbl">Experience</div>
+    </div>
+    <div class="scan-item">
+      <div class="num">Ready</div>
+      <div class="lbl">To Join</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head">
+    <div class="kicker">Get to know me</div>
+    <h2>About Me</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="about-text">
+    <p>
+      My name is <b>Talsaniya Maharshi</b>. I am a BCA graduate with a strong base in programming
+      and web development.
+    </p>
+    <p>
+      I know <b>Python, Laravel, HTML, CSS, Java, C#, SQL,</b> and <b>ASP.NET</b>. I also work with
+      data using tools like <b>Pandas, NumPy, Power BI,</b> and <b>Excel</b>. I am looking for a
+      software development role where I can use my skills, learn new technologies, and work on
+      real projects.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="education">
+  <div class="inner">
+    <div class="section-head">
+      <div class="kicker">My studies</div>
+      <h2>Education</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="degree">Bachelor of Computer Application (BCA)</div>
+        <div class="school">Navgujarat College of Computer Application</div>
+        <div class="years">CGPA: 7.97</div>
+      </div>
+      <div class="timeline-item">
+        <div class="degree">Higher Secondary Education</div>
+        <div class="school">Adarsh Secondary and Higher Secondary School</div>
+        <div class="years">Percentage: 80%</div>
+      </div>
+      <div class="timeline-item">
+        <div class="degree">Secondary Education</div>
+        <div class="school">Adarsh Secondary and Higher Secondary School</div>
+        <div class="years">Percentage: 76%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head">
+    <div class="kicker">What I can do</div>
+    <h2>Skills</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">Laravel</span>
+        <span class="skill-tag">Python</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="title">Web Technologies</div>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">AJAX</span>
+        <span class="skill-tag">REST APIs</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="title">Frameworks</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Bootstrap</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="title">Databases</div>
+      <div class="skill-tags">
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">SQLite</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="title">Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">VS Code</span>
+        <span class="skill-tag">XAMPP / WAMP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="hobbies">
+  <div class="inner">
+    <div class="section-head">
+      <div class="kicker">Outside of work</div>
+      <h2>Hobbies</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="hobbies-row">
+      <div class="hobby"><span class="ico">🎤</span> Singing</div>
+      <div class="hobby"><span class="ico">🏏</span> Sports</div>
+      <div class="hobby"><span class="ico">🎵</span> Music</div>
+      <div class="hobby"><span class="ico">✈️</span> Travel</div>
+      <div class="hobby"><span class="ico">📷</span> Photography</div>
+      <div class="hobby"><span class="ico">🎮</span> Gaming</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-wrap">
+    <h2>Let's Connect</h2>
+    <p>I am ready to start my career. Feel free to reach out for any job opportunity.</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="lbl">Email</div>
+        <div class="val">maharshitalsaniya16@gmail.com</div>
+      </div>
+      <div class="contact-card">
+        <div class="lbl">Phone</div>
+        <div class="val">+91 70962 41105</div>
+      </div>
+    </div>
+    <a class="btn solid" id="emailBtn2" href="#" target="_blank" rel="noopener">Email Me</a>
+  </div>
+</section>
+
+<footer>© 2026 Talsaniya Maharshi. All rights reserved.</footer>
+
+<script>
+  var gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=maharshitalsaniya16@gmail.com&su=" +
+    encodeURIComponent("Job Opportunity") +
+    "&body=" + encodeURIComponent("Hello Maharshi,\n\n");
+
+  document.getElementById('emailBtn').href = gmailLink;
+  document.getElementById('emailBtn2').href = gmailLink;
+
+  var toggle = document.getElementById('navToggle');
+  var mobileNav = document.getElementById('navMobile');
+  toggle.addEventListener('click', function(){
+    var isOpen = mobileNav.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobileNav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
