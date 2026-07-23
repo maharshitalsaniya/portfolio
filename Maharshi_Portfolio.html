@@ -339,6 +339,72 @@
     font-weight: 600;
   }
 
+  /* ---------- Projects ---------- */
+  .project-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--burgundy);
+    border-radius: 4px;
+    padding: 28px 30px;
+  }
+  .project-top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .project-title{
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .project-tech{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--navy);
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+  .project-desc{
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  .project-resp-title{
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 10px;
+  }
+  .project-resp ul{
+    list-style: none;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px 20px;
+  }
+  .project-resp li{
+    position: relative;
+    padding-left: 18px;
+    font-size: 14.5px;
+    color: var(--text);
+  }
+  .project-resp li::before{
+    content:"";
+    position:absolute;
+    left:0; top:8px;
+    width:7px; height:7px;
+    background: var(--burgundy);
+    border-radius:50%;
+  }
+
   /* ---------- Hobbies ---------- */
   .hobbies-row{
     display:flex;
@@ -456,6 +522,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#hobbies">Hobbies</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -467,6 +534,7 @@
     <a href="#about">About</a>
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
     <a href="#hobbies">Hobbies</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -475,7 +543,7 @@
 <section class="hero">
   <div class="hero-eyebrow">Available for hire</div>
   <h1>Talsaniya Maharshi</h1>
-  <div class="role">BCA Graduate &nbsp;</div>
+  <div class="role">BCA Graduate &nbsp;•&nbsp; Web Developer (Fresher)</div>
   <p class="summary">
     A BCA graduate from Ahmedabad, skilled in Python, Laravel, Java, C#, HTML, CSS, SQL, and ASP.NET.
     Looking for a software development role to learn, grow, and contribute from day one.
@@ -597,6 +665,33 @@
         <span class="skill-tag">VS Code</span>
         <span class="skill-tag">XAMPP / WAMP</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head">
+    <div class="kicker">What I've built</div>
+    <h2>Projects</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="project-card">
+    <div class="project-top">
+      <div class="project-title">Smart Building and Facility Management System</div>
+      <div class="project-tech">Laravel</div>
+    </div>
+    <p class="project-desc">
+      A college project focused on smart building and facility management — built to manage
+      building facilities and improve management processes using web technology.
+    </p>
+    <div class="project-resp">
+      <div class="project-resp-title">Responsibilities</div>
+      <ul>
+        <li>Worked on application development using the Laravel framework</li>
+        <li>Designed and managed database operations</li>
+        <li>Developed web pages using Laravel</li>
+        <li>Implemented backend functionality and system features</li>
+      </ul>
     </div>
   </div>
 </section>
